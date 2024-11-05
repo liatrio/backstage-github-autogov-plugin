@@ -5,6 +5,7 @@ import {
 
 import { rootRouteRef } from "./routes";
 
+// Create the plugin
 export const githubReleasesAutogovPlugin = createPlugin({
   id: "github-releases-autogov",
   routes: {
@@ -12,6 +13,7 @@ export const githubReleasesAutogovPlugin = createPlugin({
   },
 });
 
+// Provide the GithubReleasesAutogovPage extension
 export const GithubReleasesAutogovPage = githubReleasesAutogovPlugin.provide(
   createRoutableExtension({
     name: "GithubReleasesAutogovPage",
