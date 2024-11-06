@@ -24,3 +24,14 @@ export const GithubReleasesAutogovPage = githubReleasesAutogovPlugin.provide(
     mountPoint: rootRouteRef,
   }),
 );
+
+export const CustomCatalogPage = githubReleasesAutogovPlugin.provide(
+  createRoutableExtension({
+    name: "CustomCatalogPage",
+    component: () =>
+      import("./components/CatalogWithAutoGov/CustomCatalogPage").then(
+        (m) => m.CustomCatalogPage,
+      ),
+    mountPoint: rootRouteRef,
+  }),
+);

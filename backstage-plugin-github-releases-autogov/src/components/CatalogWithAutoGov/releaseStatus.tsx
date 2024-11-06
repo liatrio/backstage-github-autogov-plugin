@@ -1,8 +1,8 @@
 // ReleaseStatus.tsx
 import React from 'react';
 import { Chip, Typography } from '@material-ui/core';
-import useLatestGithubRelease from '../../hooks/useLatestRelease';
-import { useProjectEntity } from '../../../GitHubReleaseCard/hooks/useProjectEntity';
+import useLatestGithubRelease from './hooks/useLatestRelease';
+import { useProjectEntity } from './../GitHubReleaseCard/hooks/useProjectEntity';
 import { Entity } from '@backstage/catalog-model';
 
 interface ReleaseStatusProps {
