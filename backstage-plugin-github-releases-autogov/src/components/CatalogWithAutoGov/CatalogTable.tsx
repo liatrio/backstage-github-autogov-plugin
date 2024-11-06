@@ -28,7 +28,6 @@ import Star from '@material-ui/icons/Star';
 import StarBorder from '@material-ui/icons/StarBorder';
 import { capitalize } from 'lodash';
 import pluralize from 'pluralize';
-import React, { ReactNode, useMemo, useEffect, useState } from 'react';
 import { columnFactories } from './columns';
 import { CatalogTableRow } from './types';
 

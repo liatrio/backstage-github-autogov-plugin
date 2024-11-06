@@ -25,7 +25,6 @@ import {
   humanizeEntityRef,
 } from '@backstage/plugin-catalog-react';
 import { JsonArray } from '@backstage/types';
-import { Chip, Typography } from '@material-ui/core';
 import React from 'react';
 import { CatalogTableRow } from './types';
 import ReleaseStatus from './releaseStatus'; // Import the reusable component
