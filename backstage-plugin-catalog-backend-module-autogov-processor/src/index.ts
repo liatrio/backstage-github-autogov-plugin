@@ -5,4 +5,4 @@
  * @packageDocumentation
  */
 
-export { catalogModuleAutogovProcessor as default } from './module';
+export { catalogModuleAutogovProcessor as default } from "./module";
