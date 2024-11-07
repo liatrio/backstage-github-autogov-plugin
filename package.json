@@ -38,7 +38,7 @@
     "prepare": "husky",
     "clean": "backstage-cli repo clean"
   },
-  "packageManager": "yarn@1.22.22",
+  "packageManager": "yarn@4.5.1",
   "configSchema": {
     "$schema": "https://backstage.io/schema/config-v1",
     "title": "@liatrio/backend-module-autogov-processor",
