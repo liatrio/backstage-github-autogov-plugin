@@ -6,4 +6,3 @@
  */
 
 export { catalogModuleAutogovProcessor as default } from "./module";
-export * from "./constants";

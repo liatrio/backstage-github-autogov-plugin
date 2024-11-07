@@ -1,6 +1,6 @@
 {
   "name": "@liatrio/backstage-github-autogov-plugin",
-  "version": "1.2.1",
+  "version": "1.2.5",
   "private": true,
   "repository": {
     "type": "git",
@@ -19,6 +19,7 @@
   },
   "workspaces": [
     "backstage-plugin-autogov-common",
+    "backstage-plugin-catalog-backend-module-autogov-processor",
     "backstage-plugin-github-releases-assets-backend",
     "backstage-plugin-github-releases-autogov"
   ],
@@ -30,12 +31,60 @@
     "build": "backstage-cli repo build --all",
     "lint": "backstage-cli repo lint",
     "lint:all": "yarn lint && yarn prettier:check",
-    "test:all": "yarn --cwd backstage-plugin-github-releases-autogov test --no-watch && yarn --cwd backstage-plugin-github-releases-assets-backend test --no-watch && yarn --cwd backstage-plugin-autogov-common test --no-watch",
+    "test:all": "yarn --cwd backstage-plugin-github-releases-autogov test --no-watch && yarn --cwd backstage-plugin-github-releases-assets-backend test --no-watch && yarn --cwd backstage-plugin-autogov-common test --no-watch && yarn --cwd backstage-plugin-catalog-backend-module-autogov-processor test --no-watch",
     "prettier:check": "npx --yes prettier --check .",
     "prettier:fix": "npx --yes prettier --write .",
     "tsc:full": "tsc --skipLibCheck true --incremental false",
     "prepare": "husky",
     "clean": "backstage-cli repo clean"
   },
-  "packageManager": "yarn@1.22.22+sha1.ac34549e6aa8e7ead463a7407e1c7390f61a6610"
+  "packageManager": "yarn@4.5.1",
+  "configSchema": {
+    "$schema": "https://backstage.io/schema/config-v1",
+    "title": "@liatrio/backend-module-autogov-processor",
+    "type": "object",
+    "properties": {
+      "github": {
+        "type": "object",
+        "description": "GitHub configuration",
+        "properties": {
+          "resultsFile": {
+            "type": "object",
+            "description": "Autogov results file configuration",
+            "properties": {
+              "allowOverride": {
+                "type": "boolean",
+                "description": "Whether to allow override of default results file location",
+                "default": false
+              },
+              "default": {
+                "type": "string",
+                "description": "Default name for the results file",
+                "default": "results"
+              }
+            }
+          },
+          "requireAnnotation": {
+            "type": "boolean",
+            "description": "Whether to require annotations for processing",
+            "default": true
+          },
+          "entityKinds": {
+            "type": "array",
+            "description": "Array of entity kinds to process",
+            "default": [
+              "component"
+            ]
+          },
+          "entityTypes": {
+            "type": "array",
+            "description": "Array of entity types to process",
+            "default": [
+              "website"
+            ]
+          }
+        }
+      }
+    }
+  }
 }

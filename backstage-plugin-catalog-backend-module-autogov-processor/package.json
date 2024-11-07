@@ -1,17 +1,18 @@
 {
-  "name": "@liatrio/backstage-plugin-github-releases-assets-backend",
-  "version": "1.2.0",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "name": "@liatrio/backstage-plugin-catalog-backend-module-autogov-processor",
+  "description": "The autogov-processor backend module for the catalog plugin.",
+  "version": "0.1.0",
+  "main": "src/index.ts",
+  "types": "src/index.ts",
   "license": "Apache-2.0",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/liatrio/backstage-github-autogov-plugin.git",
-    "directory": "backstage-plugin-github-releases-assets-backend"
+    "directory": "backstage-plugin-catalog-backend-module-autogov-processor"
   },
   "backstage": {
-    "role": "backend-plugin",
-    "pluginId": "github:releases-assets-backend",
+    "role": "backend-plugin-module",
+    "pluginId": "catalog-backend-module-autogov-processor",
     "pluginPackages": []
   },
   "publishConfig": {
@@ -33,29 +34,19 @@
     "prepare": "husky"
   },
   "dependencies": {
-    "@backstage/backend-defaults": "^0.5.0",
     "@backstage/backend-plugin-api": "^1.0.0",
+    "@backstage/catalog-model": "^1.7.0",
     "@backstage/config": "^1.2.0",
-    "express": "^4.17.1",
-    "express-promise-router": "^4.1.0",
-    "husky": "^9.1.6",
-    "node-fetch": "^2.6.7"
+    "@backstage/integration": "^1.15.1",
+    "@backstage/plugin-catalog-node": "^1.13.1",
+    "@backstage/types": "^1.1.1",
+    "@liatrio/backstage-plugin-autogov-common": "^1.2.4",
+    "node-fetch": "2"
   },
   "devDependencies": {
     "@backstage/backend-test-utils": "^1.0.0",
     "@backstage/cli": "^0.27.1",
-    "@backstage/plugin-auth-backend": "^0.23.0",
-    "@backstage/plugin-auth-backend-module-guest-provider": "^0.2.0",
-    "@types/express": "*",
-    "@types/jest": "^29.5.13",
-    "@types/node": "^22.7.5",
-    "@types/node-fetch": "^2.6.11",
-    "@types/supertest": "^2.0.12",
-    "@types/webpack-env": "^1.18.5",
-    "jest": "^29.7.0",
-    "msw": "^2.3.1",
-    "supertest": "^6.2.4",
-    "ts-jest": "^29.2.5"
+    "@types/node-fetch": "2"
   },
   "files": [
     "dist"

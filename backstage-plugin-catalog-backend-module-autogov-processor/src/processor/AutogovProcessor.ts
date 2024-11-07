@@ -1,3 +1,12 @@
+/**
+ * @file AutoGovProcessor.ts
+ * @description Processes entities to check their autogov status from release assets
+ *
+ * @author Daniel Hagen <daniel.hagen@liatrio.com>
+ * @author Amber Beasley <amber.beasley@liatrio.com>
+ * @copyright 2024 Liatrio, Inc.
+ */
+
 import { LoggerService } from "@backstage/backend-plugin-api";
 import { Config } from "@backstage/config";
 import {
@@ -21,7 +30,7 @@ import {
   AUTOGOV_STATUS_FILE_ANNOTATION,
   AUTOGOV_STATUS_ANNOTATION,
   AUTOGOV_STATUSES,
-} from "../constants";
+} from "@liatrio/backstage-plugin-autogov-common";
 
 export type ShouldProcessEntity = (entity: Entity) => boolean;
 
@@ -32,8 +41,8 @@ interface CachedData {
 }
 
 interface AutogovProcessorOptionsResultsFile {
-  allowOverride: boolean;
-  default: string;
+  allowOverride?: boolean;
+  default?: string;
 }
 
 export interface AutogovProcessorOptions {
@@ -49,13 +58,27 @@ export interface AutogovProcessorOptions {
 }
 
 /**
- * @file AutoGovProcessor.ts
- * @description Processes entities to check their autogov status from release assets
+ * Represents a release which can either be an object containing release details or undefined.
  *
- * @author Daniel Hagen <daniel.hagen@liatrio.com>
- * @author Amber Beasley <amber.beasley@liatrio.com>
- * @copyright 2024 Liatrio, Inc.
+ * @typedef {Object} Release
+ * @property {string} url - The URL of the release.
+ * @property {number} id - The unique identifier of the release.
+ * @property {Array<Object>} assets - An array of assets associated with the release.
+ * @property {string} assets[].url - The URL of the asset.
+ * @property {string} assets[].browser_download_url - The browser download URL of the asset.
+ * @property {number} assets[].id - The unique identifier of the asset.
  */
+type Release =
+  | {
+      url: string;
+      id: number;
+      assets: Array<{
+        url: string;
+        browser_download_url: string;
+        id: number;
+      }>;
+    }
+  | undefined;
 
 /**
  * Processor that checks git repositories for autogov status files in their latest release.
@@ -181,9 +204,9 @@ export class AutogovProcessor implements CatalogProcessor {
       { ...this.loggerMeta },
     );
 
-    this.resultsFile = options.resultsFile || {
-      allowOverride: false,
-      default: "results",
+    this.resultsFile = {
+      allowOverride: options.resultsFile?.allowOverride ?? false,
+      default: options.resultsFile?.default ?? "results",
     };
     this.logger.debug(
       `Autogov Processor results file set to ${JSON.stringify(
@@ -249,9 +272,13 @@ export class AutogovProcessor implements CatalogProcessor {
   ): AutogovProcessor {
     const c = config.getOptionalConfig("autogov");
     const githubConfig = c?.getOptionalConfig("github");
+    const resultsFileConfig = githubConfig?.getOptionalConfig("resultsFile");
     if (githubConfig) {
       options.cacheTTL = githubConfig.getOptional("cacheTTL");
-      options.resultsFile = githubConfig.getOptional("resultsFile");
+      options.resultsFile = {
+        allowOverride: githubConfig.getOptional("resultsFile"),
+        default: resultsFileConfig?.getOptional("default"),
+      };
       options.requireAnnotation =
         githubConfig.getOptionalBoolean("requireAnnotation");
       options.entityKinds = githubConfig
@@ -355,9 +382,9 @@ export class AutogovProcessor implements CatalogProcessor {
       return AUTOGOV_STATUSES.ERROR;
     }
 
-    let latestRelease = undefined;
+    let latestRelease: Release = undefined;
     try {
-      latestRelease = await latestReleaseResponse.json();
+      latestRelease = (await latestReleaseResponse.json()) as Release;
     } catch (error) {
       this.logger.error(`Error parsing latest release`, {
         ...this.loggerMeta,
@@ -365,14 +392,14 @@ export class AutogovProcessor implements CatalogProcessor {
       return AUTOGOV_STATUSES.ERROR;
     }
 
-    if (latestRelease.assets.length <= 0) {
+    if (latestRelease && latestRelease?.assets.length <= 0) {
       this.logger.debug(`No assets found in latest release`, {
         ...this.loggerMeta,
       });
       return AUTOGOV_STATUSES.N_A;
     }
 
-    const result = latestRelease.assets.find((asset: any) => {
+    const result = latestRelease?.assets.find((asset: any) => {
       return asset.name === resultsFile;
     });
     if (!result) {

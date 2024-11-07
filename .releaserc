@@ -46,6 +46,14 @@
         "pkgRoot": "backstage-plugin-autogov-common",
         "registry": "https://npm.pkg.github.com/"
       }
+    ],
+    [
+      "@semantic-release/npm",
+      {
+        "npmPublish": true,
+        "pkgRoot": "backstage-plugin-catalog-backend-module-autogov-processor",
+        "registry": "https://npm.pkg.github.com/"
+      }
     ]
   ]
 }
