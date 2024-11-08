@@ -1,7 +1,7 @@
 {
   "name": "@liatrio/backstage-github-autogov-plugin",
-  "version": "1.2.1",
-  "private": true,
+  "version": "1.2.5",
+  "private": false,
   "repository": {
     "type": "git",
     "url": "git+https://github.com/liatrio/backstage-github-autogov-plugin.git"
