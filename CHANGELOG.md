@@ -2,6 +2,16 @@
 
 ### Bug Fixes
 
+* dependency versions ([7c4c378](https://github.com/liatrio/backstage-github-autogov-plugin/commit/7c4c3784ec3686e75d09e274096ea572f00c234a))
+* install and build all subcomponents before tests ([#15](https://github.com/liatrio/backstage-github-autogov-plugin/issues/15)) ([60ef2e0](https://github.com/liatrio/backstage-github-autogov-plugin/commit/60ef2e02e8daa5cf0cd8e1e1e8e664ad13690a0e))
+* set packages public, update yarn ([6279cb0](https://github.com/liatrio/backstage-github-autogov-plugin/commit/6279cb06601a8390d74a46cd553b4b13c9aad293))
+* set private to false ([5ba6d90](https://github.com/liatrio/backstage-github-autogov-plugin/commit/5ba6d90c2906d3f0e7e7164088cca2ac587a2f98))
+* update yarn.lock ([63239d4](https://github.com/liatrio/backstage-github-autogov-plugin/commit/63239d4145c41f2185d79a48f7490f1ad37fb707))
+
+## [1.2.5](https://github.com/liatrio/backstage-github-autogov-plugin/compare/v1.2.4...v1.2.5) (2024-11-08)
+
+### Bug Fixes
+
 * install and build all subcomponents before tests ([#15](https://github.com/liatrio/backstage-github-autogov-plugin/issues/15)) ([60ef2e0](https://github.com/liatrio/backstage-github-autogov-plugin/commit/60ef2e02e8daa5cf0cd8e1e1e8e664ad13690a0e))
 * set packages public, update yarn ([6279cb0](https://github.com/liatrio/backstage-github-autogov-plugin/commit/6279cb06601a8390d74a46cd553b4b13c9aad293))
 * set private to false ([5ba6d90](https://github.com/liatrio/backstage-github-autogov-plugin/commit/5ba6d90c2906d3f0e7e7164088cca2ac587a2f98))
