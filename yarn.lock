@@ -5244,6 +5244,23 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@liatrio/backstage-plugin-autogov-common@npm:^v1.2.4":
+  version: 1.2.4
+  resolution: "@liatrio/backstage-plugin-autogov-common@npm:1.2.4::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40liatrio%2Fbackstage-plugin-autogov-common%2F1.2.4%2F0e65dbc6122dbad8cde581a20d8f1feb3092bbdf"
+  dependencies:
+    "@backstage/core-components": "npm:^0.15.0"
+    "@backstage/core-plugin-api": "npm:^1.9.4"
+    "@backstage/theme": "npm:^0.5.7"
+    "@material-ui/core": "npm:^4.9.13"
+    "@material-ui/icons": "npm:^4.9.1"
+    "@material-ui/lab": "npm:^4.0.0-alpha.61"
+    react-use: "npm:^17.2.4"
+  peerDependencies:
+    react: ^16.13.1 || ^17.0.0 || ^18.0.0
+  checksum: 10c0/d628c847a6fe57c1d24cad2a266766d9b9713a7826bf84ee5beff88f3d302bfeba066a65b376e28e442f0877c29d7d70bb66ba5e0b444015ef4f5a886b7dc775
+  languageName: node
+  linkType: hard
+
 "@liatrio/backstage-plugin-autogov-common@workspace:backstage-plugin-autogov-common":
   version: 0.0.0-use.local
   resolution: "@liatrio/backstage-plugin-autogov-common@workspace:backstage-plugin-autogov-common"
@@ -5341,6 +5358,24 @@ __metadata:
     zustand: "npm:3.6.9"
   peerDependencies:
     react: ^16.13.1 || ^17.0.0 || ^18.0.0
+  languageName: unknown
+  linkType: soft
+
+"@liatrio/backstage-plugin-module-autogov-processor@workspace:backstage-plugin-module-autogov-processor":
+  version: 0.0.0-use.local
+  resolution: "@liatrio/backstage-plugin-module-autogov-processor@workspace:backstage-plugin-module-autogov-processor"
+  dependencies:
+    "@backstage/backend-plugin-api": "npm:^1.0.0"
+    "@backstage/backend-test-utils": "npm:^1.0.0"
+    "@backstage/catalog-model": "npm:^1.7.0"
+    "@backstage/cli": "npm:^0.27.1"
+    "@backstage/config": "npm:^1.2.0"
+    "@backstage/integration": "npm:^1.15.1"
+    "@backstage/plugin-catalog-node": "npm:^1.13.1"
+    "@backstage/types": "npm:^1.1.1"
+    "@liatrio/backstage-plugin-autogov-common": "npm:^v1.2.4"
+    "@types/node-fetch": "npm:2"
+    node-fetch: "npm:2"
   languageName: unknown
   linkType: soft
 
@@ -9364,7 +9399,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node-fetch@npm:^2.6.11":
+"@types/node-fetch@npm:2, @types/node-fetch@npm:^2.6.11":
   version: 2.6.11
   resolution: "@types/node-fetch@npm:2.6.11"
   dependencies:
@@ -21476,6 +21511,20 @@ __metadata:
   languageName: node
   linkType: hard
 
+"node-fetch@npm:2, node-fetch@npm:^2.6.12, node-fetch@npm:^2.6.7, node-fetch@npm:^2.6.9, node-fetch@npm:^2.7.0":
+  version: 2.7.0
+  resolution: "node-fetch@npm:2.7.0"
+  dependencies:
+    whatwg-url: "npm:^5.0.0"
+  peerDependencies:
+    encoding: ^0.1.0
+  peerDependenciesMeta:
+    encoding:
+      optional: true
+  checksum: 10c0/b55786b6028208e6fbe594ccccc213cab67a72899c9234eb59dba51062a299ea853210fcf526998eaa2867b0963ad72338824450905679ff0fa304b8c5093ae8
+  languageName: node
+  linkType: hard
+
 "node-fetch@npm:2.6.7":
   version: 2.6.7
   resolution: "node-fetch@npm:2.6.7"
@@ -21487,20 +21536,6 @@ __metadata:
     encoding:
       optional: true
   checksum: 10c0/fcae80f5ac52fbf5012f5e19df2bd3915e67d3b3ad51cb5942943df2238d32ba15890fecabd0e166876a9f98a581ab50f3f10eb942b09405c49ef8da36b826c7
-  languageName: node
-  linkType: hard
-
-"node-fetch@npm:^2.6.12, node-fetch@npm:^2.6.7, node-fetch@npm:^2.6.9, node-fetch@npm:^2.7.0":
-  version: 2.7.0
-  resolution: "node-fetch@npm:2.7.0"
-  dependencies:
-    whatwg-url: "npm:^5.0.0"
-  peerDependencies:
-    encoding: ^0.1.0
-  peerDependenciesMeta:
-    encoding:
-      optional: true
-  checksum: 10c0/b55786b6028208e6fbe594ccccc213cab67a72899c9234eb59dba51062a299ea853210fcf526998eaa2867b0963ad72338824450905679ff0fa304b8c5093ae8
   languageName: node
   linkType: hard
 
